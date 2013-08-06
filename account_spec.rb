@@ -21,9 +21,19 @@ describe Account do
       it "does not create an account with an integer" do
         expect { Account.new(1234567890) }.to raise_error(NoMethodError) #regex can't run on an integer!
       end
+
       it "does not allow account creation without passing an account number" do
         expect { Account.new }.to raise_error(ArgumentError)
       end
+
+      it "does not allow account creation with more than two arguments" do
+        expect { Account.new("1234567890", 1000, "LOL TESTS") }.to raise_error(ArgumentError)
+      end
+
+      it "does not allow account creation with a combination of integer/character values" do
+        expect { Account.new("123abc1234") }.to raise_error(InvalidAccountNumberError)
+      end
+
       it "does not allow account creation if the account number is not equal to 10 characters" do
         expect { Account.new("1234") }.to raise_error(InvalidAccountNumberError)
         expect { Account.new("12345678901234") }.to raise_error(InvalidAccountNumberError)
