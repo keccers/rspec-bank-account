@@ -3,7 +3,6 @@ class Account
 
   def initialize(acct_number, starting_balance = 0)
     validate_number(acct_number)
-
     @acct_number  = acct_number
     @transactions = [ starting_balance ]
   end

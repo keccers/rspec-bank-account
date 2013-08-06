@@ -34,10 +34,21 @@ describe Account do
   end
 
   describe "#transactions" do
-    #after initialize transactions should equal starting balance
+    it "should equal 1 after account creation" do
+      expect(account_full.transactions.length).to eq(1)
+      expect(account.transactions.length).to eq(1)
+    end
+    it "the first transaction should equal the starting balance" do
+      expect(account_full.transactions[0]).to eq(1000)
+      expect(account.transactions[0]).to eq(0)
+    end
   end
 
   describe "#balance" do
+    it "should equal starting balance after account creation" do
+      expect(account.balance).to eq(0)
+      expect(account_full.balance).to eq(1000)
+    end
     #after initialize balance should equal starting balance 
   end
 
